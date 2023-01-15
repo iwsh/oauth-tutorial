@@ -14,8 +14,8 @@
     cd oauth-tutorial
     ```
 
-3. Create `.env` with your Github Client ID and Secret (Created in Step 1.)  
-    (You can refer to `.env.template`)
+3. Create `.env` with your Github Client ID and Secret created in Step 1.
+    - You can see `.env.template` as a reference
 
 4. Run application containers  
     ```
