@@ -1,0 +1,30 @@
+version: "3"
+services:
+  frontend:
+    image: node:16.17.0
+    volumes:
+      - ./frontend:/app
+    working_dir: /app
+    command: >
+      sh -c '
+        echo "installing packages..."
+        npm install &&
+        echo "install completed!"
+        npm start
+      '
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID}
+      REACT_APP_BACKEND_BASEURL: ${BACKEND_BASEURL}
+  backend:
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
